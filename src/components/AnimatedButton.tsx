@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import ClientOnly from './ClientOnly';
 
 interface AnimatedButtonProps {
   children: ReactNode;
@@ -42,7 +43,13 @@ export default function AnimatedButton({
 
   const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
 
-  const buttonContent = (
+  const staticButtonContent = (
+    <span className="relative z-10 flex items-center gap-2">
+      {children}
+    </span>
+  );
+
+  const animatedButtonContent = (
     <>
       {/* Effet de brillance au survol */}
       <motion.div
@@ -89,7 +96,7 @@ export default function AnimatedButton({
         className={`${classes} opacity-50 cursor-not-allowed`}
         disabled
       >
-        {buttonContent}
+        {staticButtonContent}
       </button>
     );
   }
@@ -97,24 +104,40 @@ export default function AnimatedButton({
   if (href) {
     return (
       <Link href={href}>
-        <motion.div
-          className={classes}
-          {...motionProps}
-        >
-          {buttonContent}
-        </motion.div>
+        <ClientOnly fallback={
+          <span className={classes}>
+            {staticButtonContent}
+          </span>
+        }>
+          <motion.span
+            className={classes}
+            {...motionProps}
+          >
+            {animatedButtonContent}
+          </motion.span>
+        </ClientOnly>
       </Link>
     );
   }
 
   return (
-    <motion.button
-      type={type}
-      className={classes}
-      onClick={onClick}
-      {...motionProps}
-    >
-      {buttonContent}
-    </motion.button>
+    <ClientOnly fallback={
+      <button
+        type={type}
+        className={classes}
+        onClick={onClick}
+      >
+        {staticButtonContent}
+      </button>
+    }>
+      <motion.button
+        type={type}
+        className={classes}
+        onClick={onClick}
+        {...motionProps}
+      >
+        {animatedButtonContent}
+      </motion.button>
+    </ClientOnly>
   );
 }

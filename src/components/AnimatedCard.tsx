@@ -38,7 +38,7 @@ export default function AnimatedCard({
       transition: {
         duration: 0.6,
         delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
       },
     },
   };
@@ -49,7 +49,7 @@ export default function AnimatedCard({
       scale: 1.02,
       transition: {
         duration: 0.3,
-        ease: 'easeOut',
+        ease: 'easeOut' as const,
       },
     },
     whileTap: {

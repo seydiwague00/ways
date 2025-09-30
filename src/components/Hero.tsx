@@ -140,7 +140,7 @@ export default function Hero({
         transition={{
           duration: 2,
           repeat: Infinity,
-          ease: 'easeInOut',
+          ease: 'easeInOut' as const,
         }}
       >
         <div className="flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors cursor-pointer">
@@ -155,7 +155,7 @@ export default function Hero({
               transition={{
                 duration: 2,
                 repeat: Infinity,
-                ease: 'easeInOut',
+                ease: 'easeInOut' as const,
               }}
             />
           </div>

@@ -22,7 +22,7 @@ export default function LoadingSpinner({ size = 'md', className = '' }: LoadingS
         transition={{
           duration: 1,
           repeat: Infinity,
-          ease: 'linear'
+          ease: 'linear' as const
         }}
       />
     </div>

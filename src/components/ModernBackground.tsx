@@ -46,7 +46,7 @@ export default function ModernBackground({
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: 'easeInOut',
+            ease: 'easeInOut' as const,
           }}
           style={{
             top: '10%',
