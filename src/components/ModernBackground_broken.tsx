@@ -137,6 +137,7 @@ export default function ModernBackground({
             }}
           />
         ))}
+      </div>
 
       {/* Overlay pour ajuster l'opacité */}
       <div className={`absolute inset-0 ${

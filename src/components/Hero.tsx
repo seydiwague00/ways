@@ -121,7 +121,7 @@ export default function Hero({
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-white mb-2">15+</div>
-              <div className="text-sm text-blue-200">Années d'expérience</div>
+              <div className="text-sm text-blue-200">Années d&apos;expérience</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-white mb-2">98%</div>
